@@ -1,0 +1,21 @@
+
+
+idle: if (data_ready=0) goto idle ; wait until data_ready=1
+store: if (data_ready=0) goto eidle
+    reg[5] = data; Store data in a register
+    err = 0                         ; reset error
+sort1: reg[1] = reg[2]              ; Reorder registers
+sort2: reg[2] = reg[3]              ; Reorder registers
+sort3: reg[3] = reg[4]              ; Reorder registers
+sort4: reg[4] = reg[5]              ; Reorder registers
+add1:    reg[5] = reg[1] + reg[2]    ; Add data, store result
+    if (V) goto eidle; On overflow, err condition
+add2:    reg[6] = reg[3] + reg[4]    ; Add data, store result
+    if (V) goto eidle; On overflow, err condition
+add3:    reg[0] = reg[5] + reg[6]    ; Add data, store result
+    if (V) goto eidle; On overflow, err condition
+        goto idle
+eidle: err = 1
+    if (data_ready=1) goto store ; wait until data_ready=1
+    if (data_ready=0) goto eidle
+

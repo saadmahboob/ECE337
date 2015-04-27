@@ -1,0 +1,21 @@
+1.)
+Isaac Sheeley
+5
+5
+5
+5
+
+Seth Bontrager
+5
+5
+5
+5
+
+2.)
+Seth and I worked together on most developing the design of the diagrams, then wrote the code for each component individually based on the the diagram designs. After that we helped each other debug our codes until we passed the given test benches and completely the assignment
+
+3.) Including during lab, we met a total of three times to work on the assignment
+
+4.) I mainly contributed to the developement of the diagrams and the debugging of code.
+
+5.) Seth also contributed to the developement of the diagrams and helped me debug. What I learned from him was how to use the wave forms to better debug my compiled code

@@ -1,0 +1,52 @@
+1.) 
+
+	data_ready must be asserted for at least two clock cycles
+
+	data must remain valid for at least two clock cycles after data_ready is asserted
+
+2.) 
+
+idle: if (data_ready=0) goto idle ; wait until data_ready=1
+store: if (data_ready=0) goto eidle
+    reg[5] = data; Store data in a register
+    err = 0                         ; reset error
+sort1: reg[1] = reg[2]              ; Reorder registers
+sort2: reg[2] = reg[3]              ; Reorder registers
+sort3: reg[3] = reg[4]              ; Reorder registers
+sort4: reg[4] = reg[5]              ; Reorder registers
+mult1:    reg[5] = reg[1] + reg[3]    ; Mult data, store result
+    if (V) goto eidle; On overflow, err condition
+mult2:    reg[6] = reg[2] + reg[4]    ; Mult data, store result
+    if (V) goto eidle; On overflow, err condition
+add:    reg[0] = reg[5] + reg[6]    ; Add data, store result
+    if (V) goto eidle; On overflow, err condition
+        goto idle
+eidle: err = 1
+    if (data_ready=1) goto store ; wait until data_ready=1
+    if (data_ready=0) goto eidle
+
+3.)
+
+	the filtered image becomes slightly blurred. This makes sense as it is averaging the shifted pixel values.
+
+4.)
+
+to read a character into a variable from a file
+$fscanf(in_file,"%c" , character);
+
+to write a character to file
+$fwrite(out_file, "%c", character)
+
+to open a file for reading and writing
+$fopen(filename, access_type);
+
+to close a file
+$fclose(file);
+
+to seek through a file
+$fseek(res_file, res_image_data_ptr, `SEEK_START);
+
+
+5.)
+%b, %c, %d, %s, %h or %x, %o, %f 
+

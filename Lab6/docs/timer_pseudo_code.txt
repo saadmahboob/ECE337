@@ -1,0 +1,25 @@
+TIMER BLOCK PSEUDO-CODE
+
+
+rollover_value = 9;
+
+if received start :
+	enable counter;
+
+if received stop :
+	disable counter;
+	reset counter;
+
+count rising edges :
+
+if(rise_count == 8) :
+	byte_received = 1;
+    if(falling_edge_found) :
+        ack_prep = 1;
+
+else if(rise_count == 9) :
+	check_ack = 1;
+    if(falling_edge_found):
+        ack_done = 1;
+
+
